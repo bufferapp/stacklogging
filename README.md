@@ -23,6 +23,21 @@ log = structlog.get_logger("example")
 log.info("This is an information message", this_is_a_custom_key=500)
 ```
 
+This will print to `STDOUT` a JSON similar to this:
+
+```json
+{
+  "this_is_a_custom_key": 500,
+  "message": "This is an information message",
+  "severity": "info",
+  "timestamp": { "seconds": 1537263851, "nanos": 200867414 },
+  "serviceContext": { "service": "example" },
+  "context": { "functionName": "example" }
+}
+```
+
+Stackdriver Logging will be able to read `severity` aswell as `context`.
+
 ## License
 
 MIT © Buffer
