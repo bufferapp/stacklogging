@@ -40,8 +40,36 @@ This will output a JSON like this one:
     "severity": "INFO",
     "sourceLocation": {
         "file": "test.py",
-        "function": "sum"
+        "function": "sum",
+        "line": 6
     }
+}
+```
+
+It is also possible to log extra fields at runtime using the `extra` parameter.
+
+```python
+logger.info("message", extra={"from": "Alice", "to": "Bob"})
+```
+
+Stacklogging will add the extra keys to the final JSON:
+
+```json
+{
+    "message": "Email sent",
+    "timestamp": {
+        "seconds": 1548260191,
+        "nanos": 256482124
+    },
+    "thread": 140166127678976,
+    "severity": "INFO",
+    "sourceLocation": {
+        "file": "test.py",
+        "function": "sum",
+        "line": 9
+    },
+    "from": "Alice",
+    "to": "Bob"
 }
 ```
 
