@@ -3,40 +3,47 @@
 [![License](https://img.shields.io/github/license/mashape/apistatus.svg)](LICENSE)
 [![PyPI version](https://badge.fury.io/py/mongoct.svg)](https://badge.fury.io/py/stacklogging)
 
-Log entries in Stackdriver Logging without having to authenticate in GCE. This package will format logs in the [JSON schema understood by Stackdriver API](https://cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry).
+This small library generates log entries that are understood by Stackdriver Logging. You won't need to authenticate in GCE. The logs emmited will be in [JSON schema understood by Stackdriver API](https://cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry).
 
 ## Installation
 
 You can use `pip` to install `stacklogging`:
 
-```
+```bash
 pip install stacklogging
 ```
 
 ## Usage
 
 ```python
-from stacklogging import structlog
+import stacklogging
 
-log = structlog.get_logger("example")
+logger = stacklogging.getLogger()
 
-log.info("This is an information message", this_is_a_custom_key=500)
+def sum(a, b):
+    logger.info(f"Adding {a} and {b}")
+    return a + b
+
+r = sum(2, 4)
 ```
 
-This will print to `STDOUT` a JSON similar to this:
+This will output a JSON like this one:
 
 ```json
 {
-  "this_is_a_custom_key": 500,
-  "message": "This is an information message",
-  "severity": "info",
-  "timestamp": { "seconds": 1537263851, "nanos": 200867414 },
-  "serviceContext": { "service": "example" },
-  "context": { "functionName": "example" }
+    "message": "Adding 2 and 4",
+    "timestamp": {
+        "seconds": 1548239928,
+        "nanos": 380779027
+    },
+    "thread": 140619343472128,
+    "severity": "INFO",
+    "sourceLocation": {
+        "file": "test.py",
+        "function": "sum"
+    }
 }
 ```
-
-Stackdriver Logging will be able to read `severity` aswell as `context`.
 
 ## License
 
