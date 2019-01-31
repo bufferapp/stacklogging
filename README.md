@@ -3,7 +3,7 @@
 [![License](https://img.shields.io/github/license/mashape/apistatus.svg)](LICENSE)
 [![PyPI version](https://badge.fury.io/py/mongoct.svg)](https://badge.fury.io/py/stacklogging)
 
-This small library generates log entries that are understood by Stackdriver Logging. You won't need to authenticate in GCE. The logs emmited will be in [JSON schema understood by Stackdriver API](https://cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry).
+This small library generates log entries that are understood by Stackdriver Logging. You won't need to authenticate in GCE. The logs emmited will be in [JSON schema understood by Stackdriver API](https://cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry) and [Stackdriver Logging](https://cloud.google.com/error-reporting/docs/formatting-error-messages).
 
 ## Installation
 
