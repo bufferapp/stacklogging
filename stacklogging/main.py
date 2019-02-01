@@ -47,11 +47,6 @@ def format_stackdriver_json(record, message):
         "timestamp": {"seconds": int(second), "nanos": int(subsecond * 1e9)},
         "thread": record.thread,
         "severity": record.levelname,
-        "sourceLocation": {
-            "file": record.filename,
-            "function": record.funcName,
-            "line": record.lineno,
-        },
     }
 
     extra_keys = get_extra_keys(record)
