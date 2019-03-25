@@ -52,7 +52,11 @@ def format_stackdriver_json(record, message):
     extra_keys = get_extra_keys(record)
 
     for key in extra_keys:
-        payload[key] = record.__dict__[key]
+        try:
+            json.dumps(record.__dict__[key])  # serialization/type error check
+            payload[key] = record.__dict__[key]
+        except TypeError:
+            payload[key] = str(record.__dict__[key])
 
     return json.dumps(payload)
 
