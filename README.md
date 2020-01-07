@@ -37,12 +37,7 @@ This will output a JSON like this one:
         "nanos": 380779027
     },
     "thread": 140619343472128,
-    "severity": "INFO",
-    "sourceLocation": {
-        "file": "test.py",
-        "function": "sum",
-        "line": 6
-    }
+    "severity": "INFO"
 }
 ```
 
@@ -63,11 +58,6 @@ Stacklogging will add the extra keys to the final JSON:
     },
     "thread": 140166127678976,
     "severity": "INFO",
-    "sourceLocation": {
-        "file": "test.py",
-        "function": "sum",
-        "line": 9
-    },
     "from": "Alice",
     "to": "Bob"
 }
